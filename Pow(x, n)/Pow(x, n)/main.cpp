@@ -15,13 +15,7 @@ public:
             return 1.0;
         
         double answer = myPow(x, abs(n / 2));
-        double _x;
-        if (abs(n) % 2 == 1) {
-            _x = x;
-        }
-        else {
-            _x = 1.0;
-        }
+        double _x = abs(n) % 2 ? x : 1.0;
         
         if (n < 0) {
             return 1.0 / (answer * answer * _x);
