@@ -5,20 +5,25 @@ class Solution(object):
 		:rtype: int
 		"""
 
-		fast = slow = 0
-		while nums[fast] != nums[slow]:
+		fast, slow = 0, 0
+
+		while True:
 			fast = nums[nums[fast]]
 			slow = nums[slow]
+			if fast == slow:
+				break
 
 		finder = 0
-		while nums[finder] != nums[slow]:
+		while True:
 			finder = nums[finder]
 			slow = nums[slow]
+			if finder == slow:
+				break
 
 		return finder
 
 def main():
-	nums = [1,2,3,4,5,4]
+	nums = [1,1,3,2,5,4]
 	s = Solution()
 	print s.findDuplicate(nums)
 
