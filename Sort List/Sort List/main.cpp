@@ -17,34 +17,35 @@ struct ListNode {
 class Solution {
 public:
     ListNode* sortList(ListNode* head) {
-        if (!head)
-            return head;
+        
         return mergeSort(head);
     }
     
     ListNode* mergeSort(ListNode* head) {
+        if (!head)
+            return NULL;
         if (!head->next)
             return head;
+        
         ListNode* slow, *fast;
         slow = fast = head;
-        while(fast) {
+        while(fast->next && fast->next->next) {
             slow = slow->next;
-            fast = fast->next;
-            if (fast)
-                fast = fast->next;
+            fast = fast->next->next;
         }
-        ListNode* p = head;
-        while (p->next != slow) {
-            p = p->next;
-        }
-        p->next = NULL;
+        ListNode* p = slow->next;
+        slow->next = NULL;
         ListNode* l1 = mergeSort(head);
-        ListNode* l2 = mergeSort(slow);
-        ListNode* newlist = merge(l1, l2);
-        return newlist;
+        ListNode* l2 = mergeSort(p);
+
+        return merge(l1, l2);
     }
     
     ListNode* merge(ListNode* l1, ListNode* l2) {
+        if (!l1)
+            return l2;
+        if (!l2)
+            return l1;
         ListNode* head, *end, *p = l1, *q = l2;
         if (p->val < q->val) {
             head = end = p;
