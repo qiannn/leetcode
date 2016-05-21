@@ -19,15 +19,12 @@ public:
             return 0;
         int maxlen = 1, start = 0;
         unordered_map<char, int> char_map;
-        char_map[s[start]] = start;
-        for (int p = 1; p < s.length(); p++) {
+        //char_map[s[start]] = start;
+        for (int p = 0; p < s.length(); p++) {
             char cur_char = s[p];
             auto repeatchar_iter = char_map.find(cur_char);
             if (repeatchar_iter != char_map.end()) {
-                int pos = char_map[cur_char];
-                while(start <= pos) {
-                    char_map.erase(s[start++]);
-                }
+                start = max(repeatchar_iter->second + 1, start);
             }
             char_map[cur_char] = p;
             maxlen = max(p - start + 1, maxlen);
@@ -51,15 +48,15 @@ int main(int argc, const char * argv[]) {
     //13
     string s4("tdknvjqvwrsvehvkheyooqegdkipsirnnbakmsfijyeoh");
     
-    cout << s.lengthOfLongestSubstring(s1) << endl;
-    cout << s.lengthOfLongestSubstring(s2) << endl;
+    //cout << s.lengthOfLongestSubstring(s1) << endl;
+    //cout << s.lengthOfLongestSubstring(s2) << endl;
     
-     cout << s.lengthOfLongestSubstring(s3) << endl;
-     cout << s.lengthOfLongestSubstring(s4) << endl;
-     //11
-     cout << s.lengthOfLongestSubstring("vaewogmglhxqbyqkdlaxuqyztrrksuenwkmkryrefqvions") << endl;
-     //
-     cout << s.lengthOfLongestSubstring("abc") << endl;
+    //cout << s.lengthOfLongestSubstring(s3) << endl;
+    cout << s.lengthOfLongestSubstring(s4) << endl;
+    //11
+    cout << s.lengthOfLongestSubstring("vaewogmglhxqbyqkdlaxuqyztrrksuenwkmkryrefqvions") << endl;
+    //3
+    //cout << s.lengthOfLongestSubstring("abc") << endl;
     
     return 0;
 }
