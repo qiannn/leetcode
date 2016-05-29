@@ -15,13 +15,14 @@ class Solution(object):
 		mid = (right + left) / 2
 		if nums[mid] == target:
 			return mid	
+			"""
 		if target == nums[right]:
 			return right
 		if target == nums[left]:
 			return left
+			"""
 
-		#print 'left %d\nright %d' %(left, right)
-		if nums[mid] > nums[left]:
+		if nums[mid] >= nums[left]:
 			if target < nums[mid] and target >= nums[left]:
 				return self.helper(left, mid - 1, nums, target)
 			else:
