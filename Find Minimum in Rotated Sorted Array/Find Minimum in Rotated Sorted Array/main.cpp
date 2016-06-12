@@ -41,7 +41,7 @@ int findMin(vector<int>& nums) {
 }
 
 int main(int argc, const char * argv[]) {
-    vector<int> nums = {1,2,3};
+    vector<int> nums = {2,2,1,3};
     cout<<findMin(nums)<<endl;
     return 0;
 }

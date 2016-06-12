@@ -15,11 +15,11 @@ class Solution(object):
 				return nums[mid]
 
 			if nums[0] < nums[mid]:
-				return findMin(nums[mid : ])
+				return self.findMin(nums[mid : ])
 			elif nums[0] > nums[mid]:
-				return findMin(nums[0 : mid + 1])
+				return self.findMin(nums[0 : mid + 1])
 			else:
-				return findMin(nums[mid + 1 : ])
+				return self.findMin(nums[mid + 1 : ])
 
 def main():
 	s = Solution()

@@ -15,12 +15,6 @@ class Solution(object):
 		mid = (right + left) / 2
 		if nums[mid] == target:
 			return mid	
-			"""
-		if target == nums[right]:
-			return right
-		if target == nums[left]:
-			return left
-			"""
 
 		if nums[mid] >= nums[left]:
 			if target < nums[mid] and target >= nums[left]:
@@ -35,9 +29,9 @@ class Solution(object):
 		return -1
 
 def main():
-	nums = [3,1]
+	nums = [3,1,1,1,1]
 	s = Solution()
-	print s.search(nums, 1)
+	print s.search(nums, 3)
 
 if __name__ == '__main__':
 	main()
