@@ -6,16 +6,6 @@
 //  Copyright © 2016年 apple. All rights reserved.
 //
 
-
-/*
- 用暴力法, recursive求会超时 O(N).
- 如果从某节点一直向左的高度 = 一直向右的高度,
- 那么以该节点为root的子树一定是complete binary tree.
- 而 complete binary tree的节点数,可以用公式算出 2^h - 1.
- 如果高度不相等, 则递归调用 return countNode(left) + countNode(right) + 1.
- 复杂度为O(h^2)
- */
-
 #include <iostream>
 
 //Definition for a binary tree node.
@@ -26,6 +16,14 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
+/*
+ 用暴力法, recursive求会超时 O(N).
+ 如果从某节点一直向左的高度 = 一直向右的高度,
+ 那么以该节点为root的子树一定是complete binary tree.
+ 而 complete binary tree的节点数,可以用公式算出 2^h - 1.
+ 如果高度不相等, 则递归调用 return countNode(left) + countNode(right) + 1.
+ 复杂度为O(h^2)
+ */
 class Solution {
 public:
     int countNodes(TreeNode* root) {
