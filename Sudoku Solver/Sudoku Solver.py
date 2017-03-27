@@ -7,7 +7,7 @@ class Solution(object):
         self.grid = [set() for i in range(9)]
 #        for line in board:
 #           tmpboard.append(list(line))
- 
+
     def solveSudoku(self, board):
         """
         :type board: List[List[str]]
@@ -34,7 +34,7 @@ class Solution(object):
 
         if board[i][j] != '.':
             return self.helper(nexti, nextj, board)
-            
+
         gridindex = i / 3 * 3 + j / 3
         for value in range(1, 10):
             if value not in self.col[j] and value not in self.row[i] and value not in self.grid[gridindex]:
@@ -61,4 +61,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-            
+
