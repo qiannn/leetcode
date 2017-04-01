@@ -14,13 +14,15 @@ class Solution(object):
             intervals.append(newInterval)
             return intervals
         flag = False
-        for i in range(len(intervals)):
-            if (intervals[i].start > newInterval.start):
+
+        listlength = len(intervals)
+        for i in range(listlength):
+            if intervals[i].start > newInterval.start:
                 intervals.insert(i, newInterval)
                 flag = True
                 break
 
-        if flag == False:
+        if flag is False:
             intervals.append(newInterval)
         rlist = []
         for interval in intervals:
@@ -28,25 +30,26 @@ class Solution(object):
                 rlist.append(interval)
             else:
                 mergeInterval = self.merge2Interval(rlist[-1], interval)
-                if mergeInterval == False:
+                if mergeInterval is False:
                     rlist.append(interval)
         return rlist
 
     def merge2Interval(self, interval1, interval2):
         if interval1.end >= interval2.start:
-            interval1.start, interval1.end = min(interval1.start, interval2.start), max(interval1.end, interval2.end)
+            interval1.start = min(interval1.start, interval2.start)
+            interval1.end = max(interval1.end, interval2.end)
             return True
         else:
             return False
 
 def main():
     #print 'hello world'
-    collection = [[1,5]]
+    collection = [[1, 5]]
     intervals = [Interval(pair[0], pair[1]) for pair in collection]
     s = Solution()
-    rlist = s.insert(intervals, Interval(2,7))
+    rlist = s.insert(intervals, Interval(2, 7))
     for interval in rlist:
-        print ("[%d, %d]" % (interval.start, interval.end))
+        print "[%d, %d]" % (interval.start, interval.end)
 
 if __name__ == '__main__':
-    main();
+    main()
